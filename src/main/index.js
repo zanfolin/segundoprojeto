@@ -10,6 +10,8 @@ export default class main extends Component {
 
         this.validaFormulario = this.validaFormulario.bind(this);
         this.removerItem = this.removerItem.bind(this);
+        this.limparLista = this.limparLista.bind(this);
+        this.imprimirListaConsole = this.imprimirListaConsole.bind(this);
 
     }
 
@@ -35,6 +37,7 @@ export default class main extends Component {
     }
 
     removerItem(id, e) {
+        e.preventDefault();
         if(id<=0){
             this.setState({erro: 'não há item a excluir'});
             return;
@@ -51,6 +54,20 @@ export default class main extends Component {
         })
     }
     
+    limparLista(e) {
+        e.preventDefault();
+        this.setState({
+            lista: [],
+            tarefa: '',
+            erro: ''
+        })
+    }
+
+
+    imprimirListaConsole(e) {
+        e.preventDefault();
+        console.table(this.state.lista);
+    }
 
   render() {
     return (
@@ -81,10 +98,10 @@ export default class main extends Component {
                 <button>
                     Adicionar Lista
                 </button>  
-                <button onClick={(e) => ( this.setState({lista: []}))}>
+                <button onClick={this.limparLista}>
                     Limpar Lista
                 </button>
-                <button onClick={(e) => ( console.table(this.state.lista))}>
+                <button onClick={this.imprimirListaConsole}>
                     Console
                 </button><br/>
                 {/* <label>{this.state.tarefa}</label><br/>*/ }
