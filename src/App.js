@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Learn React
+          Terceiro Projeto
         </p>
         <Main />
       </header>
